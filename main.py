@@ -1,7 +1,8 @@
 from argparse import ArgumentParser
 from contextlib import suppress
 from shutil import rmtree
-from sys import exit as exiter, version_info
+from sys import exit as exiter
+from sys import version_info
 
 from pyrogram import Client
 
