@@ -1,9 +1,12 @@
 from argparse import ArgumentParser
 from contextlib import suppress
 from shutil import rmtree
-from sys import exit as exiter
+from sys import exit as exiter, version_info
 
 from pyrogram import Client
+
+if version_info[0] < 3 or version_info[1] < 11:
+    exiter("Python version is lower than: 3.11.x!")
 
 parser = ArgumentParser(description="Pyro Downloader !",
                         add_help=True,
