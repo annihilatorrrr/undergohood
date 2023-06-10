@@ -34,9 +34,9 @@ except:
     parser.exit(1, "Couldn't start the client!\n")
 with suppress(Exception):
     if fname := args.fname:
-        a = f"{pbot.download_media(args.file_id, file_name=fname, block=True)}\n"
+        a = f"{pbot.download_media(args.file_id, file_name=fname)}\n"
     else:
-        a = f"{pbot.download_media(args.file_id, block=True)}\n"
+        a = f"{pbot.download_media(args.file_id)}\n"
     err = 0
 pbot.stop(True)
 if err:
