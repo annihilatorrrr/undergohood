@@ -27,22 +27,21 @@ pbot = Client(
     bot_token=args.token,
     no_updates=True,
 )
+err, a = 1, ""
 try:
     pbot.start()
 except:
-    exiter(1)
-err = 1
-if file_id := args.file_id:
-    with suppress(Exception):
-        if fname := args.fname:
-            print(pbot.download_media(file_id, file_name=fname, block=True))
-        else:
-            print(pbot.download_media(file_id, block=True))
-        err = 0
+    parser.exit(1, "Couldn't start the client!\n")
+with suppress(Exception):
+    if fname := args.fname:
+        a = f"{pbot.download_media(args.file_id, file_name=fname, block=True)}\n"
+    else:
+        a = f"{pbot.download_media(args.file_id, block=True)}\n"
+    err = 0
 pbot.stop(True)
 if err:
     rmtree("./downloads", ignore_errors=True)
     rmtree("/downloads", ignore_errors=True)
-    exiter(1)
+    parser.exit(1, "Something went Wrong with downloading!\n")
 else:
-    exiter(0)
+    parser.exit(0, a)
