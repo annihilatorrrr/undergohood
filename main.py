@@ -30,7 +30,7 @@ pbot = Client(
 err, a = 1, ""
 try:
     pbot.start()
-except:
+except Exception:
     parser.exit(1, "Couldn't start the client!\n")
 with suppress(Exception):
     if fname := args.fname:
